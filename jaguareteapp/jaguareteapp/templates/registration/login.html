@@ -1,0 +1,33 @@
+{% extends "registration/layout.html" %}
+
+{% block content %}
+{% if form.errors %}
+<p>El usuario y la clave no coinciden, por favor intente nuevamente.</p>
+{% endif %}
+
+<div class="wrapper fadeInDown">
+  <div id="formContent">
+
+  <h3>Acceder a la web</h3>
+
+  <form method="post" action="{% url 'login' %}">
+    {% csrf_token %}
+
+      <div class="mb-3">
+        <label for="exampleInputEmail1" class="form-label">Username</label>
+        <input type="username" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp">
+      </div>
+      <div class="mb-3">
+        <label for="exampleInputPassword1" class="form-label">Password</label>
+        <input type="password" class="form-control" id="exampleInputPassword1">
+      </div>
+    <div>
+      <input type="submit" class="btn btn-primary" value="Login" />
+      <input type="hidden" name="next" value="{{ next }}" />
+      <a href="{% url 'registro' %}" class="btn btn-primary">Registrarse</a>
+    </div>
+      
+  </form>
+
+
+{% endblock %}

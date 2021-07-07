@@ -1,0 +1,11 @@
+{% extends "jaguareteapp/layout.html" %}
+{% block content %}
+<div class="alert alert-info" role="alert">Categoria:{{ producto.categoria }}</div>
+<h2>{{ producto.titulo }}</h2>
+<a href="{% url 'TIENDAKAA:agregar' producto.id %}" class="btn btn-success">Agregar al carrito</a>
+<p><img src="{{ media_url  }}{{ producto.imagen.url }}" alt="{{ producto.imagen.name }}" /></p>
+<h3>Descripcion:</h3>
+<p id="descripcion">{{ producto.descripcion}}</p>
+<p>Precio:{{ producto.precio}}</p>
+<a href="{% url 'TIENDAKAA:index'%}" class="btn btn-success">Volver</a>
+{% endblock %}

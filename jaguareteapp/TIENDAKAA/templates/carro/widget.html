@@ -1,0 +1,9 @@
+{% if request.session.carro.items %}
+    {% for key, value request.session.carro.items %}
+        {{value.titulo}} - {{value.descripcion}} - {{value.precio}}
+        <a href="{% url 'TIENDAKAA:eliminar' value.producto_id' %}" class="btn btn-sm btn-success">x</a>
+
+    {% endfor %}
+{% else %}
+    <p>Sin productos</p>
+{% endif %}

@@ -1,0 +1,28 @@
+{% extends "jaguareteapp/layout.html" %}
+{% block content %}
+        
+        <ul class="list-group">
+            <li class="list-group-item active" aria-current="true">Carrito</li>
+            {% for un_producto in lista_carro %}
+                <li class="list-group-item">              
+                    <a href="{% url 'TIENDAKAA:producto' un_producto.id %}">Ver  {{un_producto.titulo}} - {{un_producto.descripcion}} - {{un_producto.precio}}
+                </li>
+            {% empty %}
+                <li>Productos en el carrito</li>
+            {% endfor %}
+        </ul>
+
+            {% for key, value in request.session.carro.items %}
+                
+             {{value.titulo}} - {{value.precio}} - 
+             <a href="#" class="btn btn-success">X</a>
+            {% endfor %}
+
+        <div class="card-footer text-center">
+            <a href="#" class="btn btn-success">Vaciar carrito</a>
+            <a href="#" class="btn btn-success">Finalizar compra</a>
+        </div>
+        
+            
+
+{% endblock %}
